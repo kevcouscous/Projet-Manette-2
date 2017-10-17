@@ -8,6 +8,8 @@ public class MovingPlateforme : MonoBehaviour {
     public float amplitudeY = 0;
     public float desynchro = 0;
 
+    public Vector2 velocity_plateforme;
+
     private float X = 0;
     private float Y = 0;
 
@@ -22,6 +24,9 @@ public class MovingPlateforme : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        rb2d.position = new Vector2( X + Mathf.Cos(Time.time) * amplitudeX, Y + Mathf.Cos(Time.time + desynchro)*amplitudeY);
+        float deltaX = -(Mathf.Cos(Time.time-Time.deltaTime) - Mathf.Cos(Time.time)) * amplitudeX;
+        float deltaY = -(Mathf.Cos(Time.time - Time.deltaTime + desynchro) - Mathf.Cos(Time.time + desynchro)) * amplitudeY;
+        velocity_plateforme = new Vector2(deltaX, deltaY);
+        rb2d.position = new Vector2(X + Mathf.Cos(Time.time) * amplitudeX, Y + Mathf.Cos(Time.time + desynchro) * amplitudeY);
     }
 }
