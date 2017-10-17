@@ -63,6 +63,7 @@ public class Physics : MonoBehaviour {
         if (moveAlongGround.x > 0)
         {
             moveAlongGround.x *= -1;
+            moveAlongGround.y *= -1;
         }
 
         Vector2 move = -moveAlongGround * deltaPosition.x;
