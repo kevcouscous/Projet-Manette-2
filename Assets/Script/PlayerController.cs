@@ -7,6 +7,8 @@ public class PlayerController : Physics {
     public float jumptakeOffSpeed = 7;
     public float maxSpeed = 7;
 
+    private int nbJump = 0;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -15,12 +17,17 @@ public class PlayerController : Physics {
     protected override void ComputeVelocity()
     {
         Vector2 move = Vector2.zero;
+        if (grounded || walled)
+        {
+            nbJump = 0;
+        }
 
         move.x = Input.GetAxis("Horizontal");
         
-        if(Input.GetButtonDown("Fire1") && (grounded||walled))
+        if(Input.GetButtonDown("Fire1") && ((grounded||walled) ||(nbJump<2)))
         {
             velocity.y = jumptakeOffSpeed * InvertedGravity;
+            nbJump++;
         }
         else if (Input.GetButtonUp("Fire1"))
         {
