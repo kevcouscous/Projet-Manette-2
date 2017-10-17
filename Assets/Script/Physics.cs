@@ -39,6 +39,7 @@ public class Physics : MonoBehaviour {
 	void Update () {
 
         targetVelocity = Vector2.zero;
+        transform.parent = null;
         ComputeVelocity();
 	}
 
@@ -92,11 +93,9 @@ public class Physics : MonoBehaviour {
             {
                 Vector2 currentNormal = hitBufferList[i].normal;
 
-                if (hitBufferList[i].rigidbody.gameObject.GetComponent<MovingPlateforme>())
+                if (hitBufferList[i].rigidbody.gameObject.GetComponent<MovingPlateforme>()&& yMovement)
                 {
-                    // velocity += hitBufferList[i].rigidbody.gameObject.GetComponent<MovingPlateforme>().velocity_plateforme;
-                    rb2d.position += hitBufferList[i].rigidbody.gameObject.GetComponent<MovingPlateforme>().velocity_plateforme;
-                    Debug.Log("plop");
+                    transform.parent = hitBufferList[i].rigidbody.gameObject.transform;
                 }
 
                 if (currentNormal.y*InvertedGravity > minGroundNormalY)
@@ -132,6 +131,6 @@ public class Physics : MonoBehaviour {
 
         }
 
-        rb2d.position = rb2d.position + move.normalized*distance;
+        rb2d.position = rb2d.position + move.normalized * distance;
     }
 }
