@@ -7,7 +7,7 @@ public class PlayerController : Physics {
     public float jumptakeOffSpeed = 7;
     public float maxSpeed = 7;
 
-    private int nbJump = 0;
+    public int nbJump = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -17,9 +17,13 @@ public class PlayerController : Physics {
     protected override void ComputeVelocity()
     {
         Vector2 move = Vector2.zero;
-        if (grounded || walled)
+        if (grounded)
         {
             nbJump = 0;
+        }
+        if (walled)
+        {
+            nbJump = 1;
         }
 
         move.x = Input.GetAxis("Horizontal");

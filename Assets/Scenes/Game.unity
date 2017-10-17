@@ -848,21 +848,6 @@ GameObject:
   m_PrefabParentObject: {fileID: 1132383916159744, guid: 8143d7a893909a944a64a54387ba364f,
     type: 2}
   m_PrefabInternal: {fileID: 283772596}
---- !u!114 &1910346067
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1910346066}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f36e8e5acffcc5e40aa297eb5c873a81, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gravityModifier: 1
-  minGroundNormalY: 0.65
-  minWallNormalX: 0.9
-  coefWall: 0.8
 --- !u!50 &1910346068
 Rigidbody2D:
   serializedVersion: 4
