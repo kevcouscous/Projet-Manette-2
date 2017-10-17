@@ -91,7 +91,15 @@ public class Physics : MonoBehaviour {
             for (int i = 0; i < hitBufferList.Count; i++)
             {
                 Vector2 currentNormal = hitBufferList[i].normal;
-                if(currentNormal.y*InvertedGravity > minGroundNormalY)
+
+                if (hitBufferList[i].rigidbody.gameObject.GetComponent<MovingPlateforme>())
+                {
+                    // velocity += hitBufferList[i].rigidbody.gameObject.GetComponent<MovingPlateforme>().velocity_plateforme;
+                    rb2d.position += hitBufferList[i].rigidbody.gameObject.GetComponent<MovingPlateforme>().velocity_plateforme;
+                    Debug.Log("plop");
+                }
+
+                if (currentNormal.y*InvertedGravity > minGroundNormalY)
                 {
                     grounded = true;
 
