@@ -78,6 +78,7 @@ public class Physics : MonoBehaviour {
 
     void Movement(Vector2 move, bool yMovement)
     {
+        Vector2 deltaposition = new Vector2(0,0);
         float distance = move.magnitude;
 
         if (distance > minMoveDistance)
@@ -95,7 +96,8 @@ public class Physics : MonoBehaviour {
 
                 if (hitBufferList[i].rigidbody.gameObject.GetComponent<MovingPlateforme>()&& yMovement)
                 {
-                    transform.parent = hitBufferList[i].rigidbody.gameObject.transform;
+                    //transform.parent = hitBufferList[i].rigidbody.gameObject.transform;
+                    deltaposition += hitBufferList[i].rigidbody.gameObject.GetComponent<MovingPlateforme>().deltaPosition;
                 }
 
                 if (currentNormal.y*InvertedGravity > minGroundNormalY)
@@ -131,6 +133,6 @@ public class Physics : MonoBehaviour {
 
         }
 
-        rb2d.position = rb2d.position + move.normalized * distance;
+        rb2d.position = rb2d.position + move.normalized * distance + deltaposition;
     }
 }

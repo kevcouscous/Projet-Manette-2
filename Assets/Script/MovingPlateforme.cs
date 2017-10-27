@@ -10,7 +10,7 @@ public class MovingPlateforme : MonoBehaviour {
     public float vitesse_oscillationX = 1;
     public float vitesse_oscillationY = 1;
 
-    private Vector2 deltaPosition;
+    public Vector2 deltaPosition;
     private float X = 0;
     private float Y = 0;
 
